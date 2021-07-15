@@ -1,0 +1,11 @@
+<input type="text" name="name" placeholder="Search by name" class="form-control" [(ngModel)]="searchTerm">
+<div class="container bg-dark text-white">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
+        <div class="col" *ngFor="let data of player | search:searchTerm  | paginate: { itemsPerPage: 12, currentPage: p};let ind=index">
+            <app-cards [playmate]=data></app-cards>
+        </div>
+    </div>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
+</div>

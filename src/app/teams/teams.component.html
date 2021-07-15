@@ -1,0 +1,23 @@
+<div class="container bg-dark text-white">
+    <table class="table text-white text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Team name</th>
+                <th>Team Logo</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+               <tr *ngFor="let data of teamsData |paginate: { itemsPerPage: 10, currentPage: p };let ind=index" >
+                   <td>{{data.id}}</td>
+                   <td>{{data.name}}</td>
+                   <td><img [src]=data.logo alt="" width="20%"></td>
+                   <td>{{data.country}}</td>
+               </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
+</div>

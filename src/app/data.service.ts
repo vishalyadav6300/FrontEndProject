@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-
   constructor(private hc:HttpClient) { }
   getData():Observable<any>
   {
@@ -16,5 +15,27 @@ export class DataService {
         }
       }
      );
+  }
+  getTeamsData():Observable<any>
+  {
+    return this.hc.get<any>("https://sportscore1.p.rapidapi.com/teams",{
+      "headers":
+      {
+        "x-rapidapi-key": "df53ff90b0mshb20d734ed3170a0p1ca434jsn75d15e26e358",
+	      "x-rapidapi-host": "sportscore1.p.rapidapi.com",
+	      "useQueryString": "true"
+      }
+    })
+  }
+  getPlayersData():Observable<any>
+  {
+    return this.hc.get<any>("https://sportscore1.p.rapidapi.com/players",{
+      "headers":
+      {
+        "x-rapidapi-key": "df53ff90b0mshb20d734ed3170a0p1ca434jsn75d15e26e358",
+        "x-rapidapi-host": "sportscore1.p.rapidapi.com",
+        "useQueryString": "true"
+      }
+    })
   }
 }
